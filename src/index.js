@@ -27,22 +27,11 @@ const server = http.createServer((req, res) => {
     }
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
     console.log(`🌐 Health check server running on port ${PORT}`);
-});
 
-// ===== Self-Ping ทุก 5 นาที =====
-const SELF_PING_URL = process.env.RAILWAY_PUBLIC_DOMAIN
-    ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}/health`
-    : `http://localhost:${PORT}/health`;
-
-setInterval(() => {
-    http.get(SELF_PING_URL.replace('https:', 'http:'), (res) => {
-        console.log(`🔄 Self-ping: ${res.statusCode}`);
-    }).on('error', (err) => {
-        // ไม่ต้อง log error เพราะอาจเป็น localhost ตอน dev
+    // หลังจาก server พร้อมแล้ว ค่อย login Discord
+    client.login(TOKEN).catch(err => {
+        console.error('Discord login failed:', err);
     });
-}, 1 * 60 * 1000); // ทุก 1 นาที
-
-// เริ่มต้นบอท
-client.login(TOKEN);
+});
