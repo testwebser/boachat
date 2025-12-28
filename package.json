@@ -1,0 +1,21 @@
+{
+  "name": "discord-bot-roleplay",
+  "version": "1.0.0",
+  "description": "Discord roleplay bot with AI personality",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node src/index.js"
+  },
+  "keywords": ["discord", "bot", "ai", "roleplay"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "groq-sdk": "^0.3.2",
+    "dotenv": "^17.2.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
